@@ -4,7 +4,7 @@ AI-powered self-healing test automation framework using Playwright and local LLM
 # AI-Powered Self-Healing Test Automation Framework
 
 ## 📌 Project Overview
-This is an M.Tech (Software Systems) capstone project that builds a Playwright-based
+This is a capstone project that builds a Playwright-based
 test automation framework capable of detecting locator failures during test execution
 and attempting self-healing using alternate locator strategies suggested by a locally
 hosted LLM (via Ollama + Llama3).
