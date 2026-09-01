@@ -17,3 +17,10 @@ This log will be used later to write the final project report.
 - Created folder structure: src/, tests/, docs/, reports/
 - Wrote README.md
 - First commit and push
+
+## Day 3 — [01/09/2026]
+- Installed Playwright via `npm init playwright@latest`
+- Chose JavaScript, reused existing tests/ folder, installed browsers
+- Explored package.json, playwright.config.js, example test
+- Ran sample tests successfully across Chromium, Firefox, WebKit
+- Verified .gitignore excludes node_modules and report folders

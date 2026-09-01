@@ -1,0 +1,27 @@
+{
+  "name": "ai-self-healing-test-automation",
+  "version": "1.0.0",
+  "description": "AI-powered self-healing test automation framework using Playwright and local LLMs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShrutiChakraborty25/ai-self-healing-test-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ShrutiChakraborty25/ai-self-healing-test-automation/issues"
+  },
+  "homepage": "https://github.com/ShrutiChakraborty25/ai-self-healing-test-automation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.0"
+  }
+}
