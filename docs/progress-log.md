@@ -34,3 +34,15 @@ This log will be used later to write the final project report.
 - Removed auto-generated boilerplate (example.spec.js, tests-examples/)
 - Target practice site chosen: https://the-internet.herokuapp.com
   (will reuse this site later to simulate broken locators for self-healing feature)
+
+  ## Day 5 — [03/09/2026]
+- Created tests/broken-locator.spec.js to deliberately trigger a locator failure
+- Studied Playwright's TimeoutError structure: error type, message, default 30s retry behavior
+- Learned try/catch in JavaScript to handle errors in our own code
+- Created tests/catch-failure-demo.spec.js: caught a locator failure manually,
+  logged error.name and error.message, used custom timeout (5000ms) to fail fast
+- Created tests/manual-self-heal-demo.spec.js: first working prototype of
+  self-healing logic -- try primary locator, catch failure, attempt hardcoded
+  fallback locator, continue test successfully
+- Key insight: this manual fallback will later be replaced by a local LLM
+  that generates the fallback locator dynamically instead of being hardcoded
