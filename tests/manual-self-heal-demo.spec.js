@@ -1,3 +1,8 @@
+// NOTE: This was our first manual prototype of self-healing logic (Day 5).
+// It has since been replaced by the reusable helper function in src/locatorHealer.js
+// (see tests/self-heal-with-helper.spec.js). Kept here for learning history.
+
+
 const { test, expect } = require('@playwright/test');
 
 test('manually heal a broken locator using a fallback', async ({ page }) => {

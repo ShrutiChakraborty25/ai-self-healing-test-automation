@@ -46,3 +46,16 @@ This log will be used later to write the final project report.
   fallback locator, continue test successfully
 - Key insight: this manual fallback will later be replaced by a local LLM
   that generates the fallback locator dynamically instead of being hardcoded
+
+  ## Day 6 — [04/09/2026]
+- Learned the DRY principle and why reusable logic belongs in src/, not tests/
+- Created src/locatorHealer.js -- first real framework module
+  - healLocator(page, primarySelector, fallbackSelector, timeout) function
+  - Uses page.locator().waitFor({ state: 'attached' }) to check existence
+    without deciding what action to perform (action-agnostic design)
+  - Learned module.exports and require() for sharing code between files
+  - Learned relative paths (../) for importing across folders
+- Created tests/self-heal-with-helper.spec.js using the new helper
+  - Demonstrates both paths: primary locator failing (fallback triggered)
+    and primary locator succeeding (no fallback needed)
+- Annotated manual-self-heal-demo.spec.js as superseded, kept for learning history
