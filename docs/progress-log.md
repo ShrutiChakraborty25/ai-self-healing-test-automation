@@ -92,3 +92,15 @@ dynamically instead.
 - Created docs/architecture.md -- first architecture document, including
   current data flow diagram and known limitations going into Week 2
 - Consolidated Week 1 summary at top of this progress log
+
+## Day 8 — [06/09/2026]
+- Installed Ollama (local LLM runtime) on macOS
+- Learned why Ollama runs as a background service exposing a REST API
+  at localhost:11434
+- Chose llama3.2 (3B) over Llama 3 (8B) for speed, while staying within
+  the Llama 3 model family (documented reasoning in docs/llm-setup-notes.md)
+- Pulled and verified the model (ollama pull, ollama list)
+- Tested interactive chat (ollama run) with locator-suggestion style prompts
+- Tested Ollama's REST API directly via curl -- confirmed programmatic
+  access works, which is what src/llmClient.js will use in Week 3
+- Created docs/llm-setup-notes.md documenting the full setup and reasoning
