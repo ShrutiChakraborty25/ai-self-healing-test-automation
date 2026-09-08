@@ -104,3 +104,19 @@ dynamically instead.
 - Tested Ollama's REST API directly via curl -- confirmed programmatic
   access works, which is what src/llmClient.js will use in Week 3
 - Created docs/llm-setup-notes.md documenting the full setup and reasoning
+
+## Day 9 — [07/09/2026]
+- Diagnosed why Day 8's prompt failed (no real HTML context, no explicit
+  instruction against repeating the broken locator)
+- Learned Node.js's built-in fetch() API for sending HTTP requests from code
+- Created src/llmClient.js:
+  - suggestLocator(brokenSelector, htmlSnippet) -- sends a prompt + real
+    HTML context to Ollama, returns a cleaned locator suggestion
+  - cleanLocatorResponse(rawText) -- strips backticks/quotes/extra lines
+    from the model's raw output
+- Created scripts/ folder (new top-level structure) for standalone dev/debug
+  scripts, separate from src/ (framework) and tests/ (Playwright test cases)
+- Created scripts/test-llm-client.js -- verified llmClient.js works correctly
+  in isolation, before any Playwright integration
+- Confirmed improved prompt produces a genuinely useful suggestion (#username)
+  instead of yesterday's unhelpful repeat

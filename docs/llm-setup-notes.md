@@ -40,3 +40,22 @@ not assumed to be reliable by default.
 Build src/llmClient.js -- a Node.js module that sends this same kind of
 request programmatically (instead of via curl) and extracts the locator
 suggestion from the response.
+
+## Prompt Engineering Lesson (Day 9)
+Our first attempt (Day 8) asked the model for an "alternate locator" without
+providing real HTML context, and without explicitly forbidding it from
+repeating the original. Result: the model just echoed back the same broken
+selector -- unhelpful.
+
+Fix: the improved prompt (Day 9) does two things differently:
+1. Includes the actual relevant HTML snippet from the page as context
+2. Explicitly states the answer "MUST be different" from the broken selector
+
+This produced a correct suggestion. Lesson: prompt quality and context are
+just as important as model choice for this use case.
+
+## Response Cleaning
+The model does not always output a perfectly clean locator string -- it may
+wrap it in backticks/quotes or add extra lines. src/llmClient.js includes a
+cleanLocatorResponse() function to strip this reliably before the locator
+is used anywhere else in the framework.
