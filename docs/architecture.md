@@ -58,3 +58,17 @@ whichever locator was returned
 - `src/executionHistory.js` -- logs every healing event (timestamp, test name,
   primary locator, fallback used, success/failure) to a persistent file
 - Custom reporting layer to visualize healing activity per test run
+
+## Known Limitations (updated Day 10)
+
+1. ~~Fallback locator is hardcoded~~ -- SOLVED (Day 10): `healLocatorWithAI()`
+   in src/locatorHealer.js now dynamically extracts real page HTML and asks
+   a local LLM (llama3.2 via Ollama) for a suggested fallback, instead of a
+   hardcoded string.
+2. HTML context sent to the LLM is currently scoped to the nearest <form>
+   element (or full <body> if no form exists) -- this keeps prompts fast and
+   focused, but may miss the right element on more complex, non-form pages.
+   Future refinement: smarter context extraction based on element proximity.
+3. No execution history is recorded yet -- healing events are only printed
+   to the console. Planned: src/executionHistory.js to persist these events.
+4. No structured reporting of healing events in the HTML report yet.

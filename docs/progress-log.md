@@ -120,3 +120,18 @@ dynamically instead.
   in isolation, before any Playwright integration
 - Confirmed improved prompt produces a genuinely useful suggestion (#username)
   instead of yesterday's unhelpful repeat
+
+  ## Day 10 — [08/09/2026]
+- Identified the missing piece: HTML context must come from the LIVE page,
+  not be typed manually
+- Added getPageHtmlContext(page) to src/locatorHealer.js -- extracts nearest
+  <form> HTML (or full <body> as fallback) to keep LLM prompts focused and fast
+- Added healLocatorWithAI(page, primarySelector, timeout) -- full self-healing
+  loop: try primary -> on failure, extract real HTML -> ask local LLM ->
+  validate suggestion actually exists on page -> return working locator
+- Created tests/self-heal-with-ai.spec.js -- first REAL end-to-end test:
+  broken locator healed automatically by local LLM, login completes successfully
+- Added nested try/catch for the case where the AI's suggestion is ALSO
+  invalid -- throws a clear custom error instead of a confusing raw TimeoutError
+- MILESTONE: full self-healing loop (Playwright + local LLM) working end-to-end
+  for the first time

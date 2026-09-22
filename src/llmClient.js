@@ -29,7 +29,13 @@ Respond with ONLY the CSS locator itself, on a single line. No explanation.
     }),
   });
 
-  /**
+  
+
+  const data = await response.json();
+   return cleanLocatorResponse(data.response);
+}
+
+/**
  * Cleans up raw LLM output, since models sometimes wrap answers in
  * backticks/quotes or add extra lines of explanation despite instructions.
  *
@@ -46,8 +52,4 @@ function cleanLocatorResponse(rawText) {
 }
 
 module.exports = { suggestLocator, cleanLocatorResponse };
-
-  const data = await response.json();
-   return cleanLocatorResponse(data.response);
-}
 
