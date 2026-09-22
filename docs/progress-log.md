@@ -135,3 +135,19 @@ dynamically instead.
   invalid -- throws a clear custom error instead of a confusing raw TimeoutError
 - MILESTONE: full self-healing loop (Playwright + local LLM) working end-to-end
   for the first time
+
+  ## Day 11 — [09/09/2026]
+- Designed the execution history schema: timestamp, primarySelector, status
+  (primary_ok / healed_by_ai / healing_failed), suggestedSelector
+- Created src/executionHistory.js using Node's built-in fs and path modules
+  - readHistory() -- reads existing JSON array from disk (empty if none)
+  - appendHistoryEntry(entry) -- adds a timestamped entry, rewrites the file
+- Learned fs.existsSync, fs.readFileSync, fs.writeFileSync, JSON.stringify
+  with indentation, and how path.join/__dirname build reliable file paths
+- Wired history logging into all 3 outcomes of healLocatorWithAI() in
+  src/locatorHealer.js: primary success, AI-healed success, and healing failure
+- Verified reports/execution-history.json accumulates entries correctly
+  across multiple test runs (confirmed via 2 consecutive runs)
+- Noted a design trade-off: this file will grow with every run and get noisy
+  in git history -- may revisit gitignoring it later in favor of periodic
+  snapshots, but committing it for now as evidence of real, working history

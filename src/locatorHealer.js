@@ -1,3 +1,4 @@
+const { appendHistoryEntry } = require('./executionHistory');
 const { suggestLocator } = require('./llmClient');
 
 /**
@@ -62,8 +63,9 @@ async function healLocatorWithAI(page, primarySelector, timeout = 5000) {
   try {
     await primary.waitFor({ state: 'attached', timeout });
     console.log(`[Healer] Primary locator OK: ${primarySelector}`);
+    appendHistoryEntry({ primarySelector, status: 'primary_ok' });
     return primary;
-    } catch (error) {
+  } catch (error) {
     console.log(`[Healer] Primary locator FAILED: ${primarySelector}`);
     console.log('[Healer] Extracting page HTML and asking local LLM...');
 
@@ -76,13 +78,23 @@ async function healLocatorWithAI(page, primarySelector, timeout = 5000) {
     try {
       await suggestedLocator.waitFor({ state: 'attached', timeout });
       console.log(`[Healer] Confirmed LLM suggestion works: ${suggested}`);
+      appendHistoryEntry({
+        primarySelector,
+        status: 'healed_by_ai',
+        suggestedSelector: suggested,
+      });
       return suggestedLocator;
     } catch (secondError) {
+      appendHistoryEntry({
+        primarySelector,
+        status: 'healing_failed',
+        suggestedSelector: suggested,
+      });
       throw new Error(
         `Self-healing failed. Primary locator "${primarySelector}" was not found, ` +
         `and the LLM's suggested locator "${suggested}" was also not found on the page.`
       );
     }
-  }}
-
+  }
+}
 module.exports = { healLocator, getPageHtmlContext, healLocatorWithAI };

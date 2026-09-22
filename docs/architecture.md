@@ -72,3 +72,10 @@ whichever locator was returned
 3. No execution history is recorded yet -- healing events are only printed
    to the console. Planned: src/executionHistory.js to persist these events.
 4. No structured reporting of healing events in the HTML report yet.
+
+- **`executionHistory.js`**
+  - Functions: `appendHistoryEntry(entry)`, `readHistory()`
+  - Responsibility: persists every healing event (primary success, AI-healed,
+    or healing failure) as a JSON array in `reports/execution-history.json`,
+    using Node's built-in `fs` module. Enables analysis of healing frequency
+    and success rate across test runs, instead of only ephemeral console logs.
