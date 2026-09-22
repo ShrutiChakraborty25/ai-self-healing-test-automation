@@ -79,3 +79,15 @@ whichever locator was returned
     or healing failure) as a JSON array in `reports/execution-history.json`,
     using Node's built-in `fs` module. Enables analysis of healing frequency
     and success rate across test runs, instead of only ephemeral console logs.
+
+    ### Reporting Utility (`scripts/summarize-history.js`)
+A standalone script (not part of the core framework, hence living in
+`scripts/` rather than `src/`) that reads `reports/execution-history.json`
+and prints human-readable statistics:
+- Total locator attempts, broken down by outcome (primary_ok / healed_by_ai /
+  healing_failed), with percentages
+- AI success rate specifically among cases where healing was actually needed
+  (a different, more meaningful denominator than "success rate overall")
+- Which specific selectors required healing, and how many times each
+
+Run via: `npm run history:summary`

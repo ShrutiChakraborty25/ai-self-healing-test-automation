@@ -14,5 +14,21 @@
     "timestamp": "2026-09-22T15:48:25.250Z",
     "primarySelector": "button[type=\"submit\"]",
     "status": "primary_ok"
+  },
+  {
+    "timestamp": "2026-09-22T15:53:00.064Z",
+    "primarySelector": "#user-name",
+    "status": "healed_by_ai",
+    "suggestedSelector": "#username"
+  },
+  {
+    "timestamp": "2026-09-22T15:53:00.132Z",
+    "primarySelector": "#password",
+    "status": "primary_ok"
+  },
+  {
+    "timestamp": "2026-09-22T15:53:00.198Z",
+    "primarySelector": "button[type=\"submit\"]",
+    "status": "primary_ok"
   }
 ]

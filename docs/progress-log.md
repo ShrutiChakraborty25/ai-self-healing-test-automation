@@ -151,3 +151,20 @@ dynamically instead.
 - Noted a design trade-off: this file will grow with every run and get noisy
   in git history -- may revisit gitignoring it later in favor of periodic
   snapshots, but committing it for now as evidence of real, working history
+
+  ## Day 12 — [10/09/2026]
+- Designed 4 key statistics worth reporting: total attempts, status
+  breakdown, AI success rate (correct denominator), per-selector failure counts
+- Created scripts/summarize-history.js, reusing readHistory() from Day 11
+  (DRY principle applied again)
+- Learned Array.filter() for counting matching entries
+- Learned the counts[key] = (counts[key] || 0) + 1 pattern for tallying
+  occurrences using a plain JS object as a lookup table
+- Learned Object.entries() to loop over key-value pairs
+- Verified output against real data: 6 total attempts, 4 primary_ok (66.7%),
+  2 healed_by_ai (33.3%), AI success rate 100% (2/2 cases where needed),
+  #user-name identified as the only selector requiring healing
+- Added npm run history:summary shortcut to package.json
+- Key report-writing lesson: "% healed out of all attempts" and "AI success
+  rate when healing was needed" are different, both-valid statistics --
+  must be precise about which one is being quoted
